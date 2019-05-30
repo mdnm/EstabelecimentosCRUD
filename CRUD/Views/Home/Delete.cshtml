@@ -1,0 +1,162 @@
+﻿@model Estabelecimentos
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h2 class="text-danger">Tem certeza que deseja deletar esse estabelecimento?</h2>
+<hr />
+
+<form asp-action="Delete">
+    <div class="container">
+        <input asp-for="Id" hidden />
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="RazaoSocial"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="RazaoSocial" class="form-control" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="NomeFantasia"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="NomeFantasia" class="form-control" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="CNPJ"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="CNPJ" class="form-control" id="cnpj" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Email"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Email" class="form-control" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Endereco"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Endereco" class="form-control" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Cidade"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Cidade" class="form-control" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Estado"></label>
+            </div>
+            <div class="col-sm-4">
+                <select asp-for="Estado" class="custom-select" id="uf" name="estado" disabled>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Telefone"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Telefone" class="form-control" id="telefone" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="DataDeCadastro"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="DataDeCadastro" class="form-control" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                @Html.DisplayNameFor(Model => Model.CategoriaId)
+            </div>
+            <div class="col-sm-4">
+                @Html.DropDownListFor(Model => Model.CategoriaId, new SelectList(Model.categoriasList, "Id", "Nome"), new { @class = "custom-select", @disabled="disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Status"></label>
+            </div>
+            <div class="col-sm-4">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input asp-for="Status" type="radio" class="custom-control-input" id="ativo" name="status" value="Ativo" checked disabled>
+                    <label class="custom-control-label" for="ativo">Ativo</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input asp-for="Status" type="radio" class="custom-control-input" id="inativo" name="status" value="Inativo" disabled>
+                    <label class="custom-control-label" for="inativo">Inativo</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Agencia"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Agencia" class="form-control" id="agencia" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Conta"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Conta" class="form-control" id="conta" disabled />
+            </div>
+        </div>
+        <br />
+        <div class="form-group pl-3">
+            <button type="submit" class="btn btn-danger px-5">
+                <i class="fa fa-trash-alt"></i>
+                Deletar
+            </button>
+            <a asp-action="Index" class="btn btn-primary px-5"><i class="fa fa-arrow-left"></i></a>
+        </div>
+    </div>
+</form>
+

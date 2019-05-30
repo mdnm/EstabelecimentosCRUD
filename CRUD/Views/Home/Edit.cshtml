@@ -1,0 +1,200 @@
+﻿@model Estabelecimentos
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h2>Edite seu estabelecimento</h2>
+<hr />
+
+<form asp-action="Edit">
+    <div class="container">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="Id" hidden />
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="RazaoSocial"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="RazaoSocial" class="form-control" />
+            </div>
+            <span asp-validation-for="RazaoSocial" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="NomeFantasia"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="NomeFantasia" class="form-control" />
+            </div>
+            <span asp-validation-for="NomeFantasia" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="CNPJ"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="CNPJ" class="form-control" id="cnpj" />
+            </div>
+            <span asp-validation-for="CNPJ" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Email"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Endereco"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Endereco" class="form-control" />
+            </div>
+            <span asp-validation-for="Endereco" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Cidade"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Cidade" class="form-control" />
+            </div>
+            <span asp-validation-for="Cidade" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Estado"></label>
+            </div>
+            <div class="col-sm-4">
+                <select asp-for="Estado" class="custom-select" id="uf" name="estado">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+            <span asp-validation-for="Estado" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Telefone"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Telefone" class="form-control" id="telefone" />
+            </div>
+            <span asp-validation-for="Telefone" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="DataDeCadastro"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="DataDeCadastro" class="form-control" />
+            </div>
+            <span asp-validation-for="DataDeCadastro" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <p class="text-danger text-nowrap">Supermercados devem conter telefone!</p>
+                @Html.DisplayNameFor(Model => Model.CategoriaId)
+            </div>
+            <div class="col-sm-4">
+                @Html.DropDownListFor(Model => Model.CategoriaId, new SelectList(Model.categoriasList, "Id", "Nome"), new { @class = "custom-select" })
+            </div>
+            <span asp-validation-for="CategoriaId" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Status"></label>
+            </div>
+            <div class="col-sm-4">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input asp-for="Status" type="radio" class="custom-control-input" id="ativo" name="status" value="Ativo" checked>
+                    <label class="custom-control-label" for="ativo">Ativo</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input asp-for="Status" type="radio" class="custom-control-input" id="inativo" name="status" value="Inativo">
+                    <label class="custom-control-label" for="inativo">Inativo</label>
+                </div>
+            </div>
+            <span asp-validation-for="Status" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Agencia"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Agencia" class="form-control" id="agencia" />
+            </div>
+            <span asp-validation-for="Agencia" class="text-danger pl-3"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label asp-for="Conta"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Conta" class="form-control" id="conta" />
+            </div>
+            <span asp-validation-for="Conta" class="text-danger pl-3"></span>
+        </div>
+        <br />
+        <div class="form-group pl-3">
+            <button type="submit" class="btn btn-success px-5">
+                <i class="fa fa-check"></i>
+                Editar
+            </button>
+            <a asp-action="Index" class="btn btn-primary px-5"><i class="fa fa-arrow-left"></i></a>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cnpj").mask('00.000.000/0000-00', {
+                clearIfNotMatch: true ,
+                placeholder: "__.___.___/____-__"
+            });
+            $("#telefone").mask('(00) 00000.0000', {
+                clearIfNotMatch: true ,
+                placeholder: "(__) _____.____"
+            });
+            $("#agencia").mask('000-0', {
+                clearIfNotMatch: true ,
+                placeholder: "xxx-x"
+            });
+            $("#conta").mask('00.000-0', {
+                clearIfNotMatch: true ,
+                placeholder: "xx.xxx-x"
+            });
+        });
+    </script>
+}
